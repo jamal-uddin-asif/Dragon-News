@@ -13,13 +13,13 @@ const NewsById = () => {
             setNewsData(news)
         }else if(id === '1'){
             const filteredNews = news?.filter(news=> news.others.is_today_pick === true)
-            console.log(filteredNews)
+            // console.log(filteredNews)
             setNewsData(filteredNews)
 
         }
         else{
             const filteredNews = news?.filter(news=> news.category_id === Number(id))
-            console.log(filteredNews)
+            // console.log(filteredNews)
             setNewsData(filteredNews)
         }
     },[id,news])
@@ -33,7 +33,7 @@ const NewsById = () => {
            <p className='text-xl font-bold text-primary mb-4'>Dragon News Home</p>
            <div className='space-y-3'>
             {
-                newsData?.map(news => <NewsCard news={news}></NewsCard>)
+                newsData?.map(news => <NewsCard key={news.id} news={news}></NewsCard>)
             }
            </div>
         </div>

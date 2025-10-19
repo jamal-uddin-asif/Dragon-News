@@ -4,6 +4,8 @@ import { Outlet } from "react-router";
 import Container from "../Components/Container";
 import LeftAsides from "../Components/Asides/LeftAsides";
 import RightAsides from "../Components/Asides/RightAsides";
+import LatestNews from "../Components/LatestNews";
+import Navber from "../Components/Navber";
 
 const RootLayout = () => {
   return (
@@ -11,6 +13,8 @@ const RootLayout = () => {
     <Container>
       <header>
         <Header></Header>
+        <LatestNews></LatestNews>
+        <Navber></Navber>
       </header>
       <main  className="grid md:grid-cols-12 gap-5">
         <aside className="left-nav md:col-span-3">

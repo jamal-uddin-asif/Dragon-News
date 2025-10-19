@@ -3,7 +3,7 @@ import { useData } from "../../Hooks/useData";
 
 const LeftAsides = () => {
   const { categories } = useData();
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div className="sticky top-5">
@@ -11,7 +11,7 @@ const LeftAsides = () => {
       <div className="flex flex-col">
         {categories &&
           categories.map((categorie) => (
-            <NavLink to={`/news/${categorie.id}`}
+            <NavLink key={categorie.id} to={`/news/${categorie.id}`}
               className={({ isActive }) =>
                 isActive
                   ? "btn border-0 hover:bg-base-200  bg-base-300 "

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../AuthProvider/AuthContext";
 
 const RegistrationForm = () => {
+  const { createUser } = useContext(AuthContext);
 
   const handleRegis = (e) => {
     e.preventDefault();
@@ -9,7 +11,14 @@ const RegistrationForm = () => {
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log({name, photo, email, password})
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="card border mx-auto  bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -55,18 +64,18 @@ const RegistrationForm = () => {
               placeholder="Password"
             />
 
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
-            <button type="submit" className="btn btn-neutral mt-4">Register</button>
+
+            <button type="submit" className="btn btn-neutral mt-4">
+              Register
+            </button>
           </fieldset>
         </form>
-          <p className="text-xs text-center">
-            Alrady have an accunt?{" "}
-            <Link to={"/login"} className="text-secondary ">
-              Login
-            </Link>
-          </p>
+        <p className="text-xs text-center">
+          Alrady have an accunt?{" "}
+          <Link to={"/login"} className="text-secondary ">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

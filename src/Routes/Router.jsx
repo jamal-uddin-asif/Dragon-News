@@ -6,6 +6,7 @@ import Career from "../Pages/Career";
 import NewsById from "../Pages/NewsById";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
+import NewsDetails from "../Pages/NewsDetails";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: 'registration',
     Component: Registration
+  },
+  {
+    path: '/newsDetails/:id',
+    Component: NewsDetails
   }
 
 ]);
