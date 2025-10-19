@@ -6,7 +6,7 @@ const LeftAsides = () => {
   console.log(categories);
 
   return (
-    <div>
+    <div className="sticky top-5">
       <h2 className="font-semibold "> All Caterogy</h2>
       <div className="flex flex-col">
         {categories &&

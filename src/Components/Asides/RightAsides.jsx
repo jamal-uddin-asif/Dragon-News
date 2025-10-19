@@ -5,7 +5,7 @@ import Qzone from '../RightAside/Qzone';
 
 const RightAsides = () => {
     return (
-        <div className='space-y-5'>
+        <div className='space-y-z'>
             <LoginWith></LoginWith>
             <FindUsOn></FindUsOn>
             <Qzone></Qzone>

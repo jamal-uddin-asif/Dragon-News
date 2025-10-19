@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import About from "../Pages/About";
 import Career from "../Pages/Career";
 import NewsById from "../Pages/NewsById";
+import Login from "../Pages/Login";
+import Registration from "../Pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,15 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path:'login',
+    Component: Login
+  },
+  {
+    path: 'registration',
+    Component: Registration
+  }
+
 ]);
 
 export { router };

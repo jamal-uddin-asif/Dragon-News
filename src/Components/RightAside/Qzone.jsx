@@ -6,9 +6,9 @@ import play from '../../assets/playground.png'
 const Qzone = () => {
     return (
         <div>
-            <img src={swiming} alt="" />
-            <img src={Class} alt="" />
-            <img src={play} alt="" />
+            <img className='w-full' src={swiming} alt="" />
+            <img className='w-full' src={Class} alt="" />
+            <img className='w-full' src={play} alt="" />
         </div>
     );
 };
