@@ -1,23 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthContext";
+import { toast } from "react-toastify";
 
 const RegistrationForm = () => {
-  const { createUser } = useContext(AuthContext);
-
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [submitErr, setSubmitErr] = useState('')
+  const [passwordErr, setPasswordErr] = useState('')
+ 
   const handleRegis = (e) => {
     e.preventDefault();
+    setPasswordErr('')
+    setSubmitErr('')
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const passwordRegEx = /^.{8,}$/;
 
+    if(!passwordRegEx.test(password)){
+      setPasswordErr('Password 8 needed')
+      return
+    }
     createUser(email, password)
       .then((result) => {
-        console.log(result);
+        updateUserProfile({displayName: name, photoURL: photo})
+        .then(()=>{
+
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+        // console.log(result);
       })
       .catch((err) => {
-        console.log(err);
+            setSubmitErr(err.message);
+            console.log(err)
       });
   };
   return (
@@ -31,6 +49,7 @@ const RegistrationForm = () => {
             {/* name  */}
             <label className="label">Name</label>
             <input
+            required
               type="text"
               name="name"
               className="input"
@@ -63,6 +82,8 @@ const RegistrationForm = () => {
               className="input"
               placeholder="Password"
             />
+            <p className="text-red-600">{passwordErr}</p>
+            <p className="text-red-600">{submitErr}</p>
 
 
             <button type="submit" className="btn btn-neutral mt-4">

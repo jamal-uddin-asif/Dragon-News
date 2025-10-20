@@ -11,14 +11,14 @@ const NewsDetails = () => {
   const { news } = useData();
 
   const findNews = news?.find((news) => news.id === id);
-console.log(findNews)
+// console.log(findNews)
   return (
     <>
-      <Container>
+      <Container className={'p-3'}>
         <header>
           <Header></Header>
         </header>
-        <main className="grid grid-cols-12 gap-8">
+        <main className="md:grid grid-cols-12 gap-8 ">
           <section className="col-span-9">
             <NewsDetailsCard findNews={findNews}></NewsDetailsCard>
           </section>

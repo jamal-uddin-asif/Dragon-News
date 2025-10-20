@@ -1,22 +1,41 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router";
+import React, { useContext, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthContext";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
-  const {singInUser} = useContext(AuthContext)
+
+  const navigate = useNavigate()
+  const {singInUser, passwordReset} = useContext(AuthContext)
+  const location = useLocation()
+  const emailRef = useRef('')
+
+
   const handleLogin = (e) =>{
     e.preventDefault();
      const email = e.target.email.value;
     const password = e.target.password.value;
     singInUser(email, password)
     .then(result=>{
-      console.log(result)
+      toast.success('Login successful')
+      navigate(location.state || '/')
     })
     .catch(err=>{
       console.log(err)
     })
-
   }
+
+   const handleForgetPassword = () =>{
+    const email = emailRef.current.value
+    // console.log(email)
+      passwordReset(email)
+      .then(()=>{
+        toast.success('Check your email for pass change')
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+   }
   return (
     <div className="card border mx-auto  bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <h1 className="text-center py-7 text-2xl text-primary font-semibold">Login your account</h1>
@@ -31,6 +50,7 @@ const LoginForm = () => {
               name="email"
               className="input"
               placeholder="Email"
+              ref={emailRef}
             />
 
             {/* password  */}
@@ -41,7 +61,7 @@ const LoginForm = () => {
               className="input"
               placeholder="Password"
             />
-          <div>
+          <div onClick={handleForgetPassword}>
             <a className="link link-hover">Forgot password?</a>
           </div>
           <button className="btn btn-neutral mt-4">Login</button>

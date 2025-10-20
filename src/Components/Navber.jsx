@@ -4,6 +4,7 @@ import useIcon from '../assets/user.png'
 import { Link } from 'react-router';
 import { useContext } from 'react';
 import { AuthContext } from './AuthProvider/AuthContext';
+import { toast } from 'react-toastify';
 
 const Navber = () => {
     const {user, signOutUser} = useContext(AuthContext)
@@ -11,7 +12,7 @@ const Navber = () => {
     const handleLogOut =()=>{
         signOutUser()
         .then(()=>{
-            alert('sign Out successfull')
+            toast.success('sign Out successfull')
         })
         .catch(err=>{
             console.log(err)
@@ -20,7 +21,8 @@ const Navber = () => {
     
     return (
         <div className='flex items-center justify-between my-3'>
-            <div>{user?.email}</div>
+            <div className='text-2xl font-bold text-primary'>{user?.displayName}</div>
+            {/* {import.meta.env.VITE_Asif_Key} */}
             <div className='flex gap-5'>
                 <MyLinks to={'/'} className={'text-accent'}>Home</MyLinks>
                 <MyLinks to={'/about'} className={'text-accent'}>About</MyLinks>
