@@ -40,7 +40,7 @@ Live Link: https://dragon-news-99.netlify.app/news/0
 
 
 ## Run locally
-- Clone the project, git clone https://dragon-news-99.netlify.app/news/0
+- Clone the project, git clone https://github.com/jamal-uddin-asif/Dragon-News.git
 - Go to project directory, cd yourrepo
 - Install dependencies,npm install
 - npm run dev
