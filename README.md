@@ -44,3 +44,7 @@ Live Link: https://dragon-news-99.netlify.app/news/0
 - Go to project directory, cd yourrepo
 - Install dependencies,npm install
 - npm run dev
+
+## Description
+
+A simple web application where users can read news, view details. This project is built using modern web technologies and follows clean UI & UX.
